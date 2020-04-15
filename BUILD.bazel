@@ -1,0 +1,19 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/grahambrooks/imprint
+gazelle(name = "gazelle")
+
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_binary")
+
+# gazelle:build_file_name BUILD,BUILD.bazel
+
+go_binary(
+    name = "imprint",
+    srcs = ["main.go",
+            "variables.go",],
+    deps = [
+        "//info:go_default_library",
+        "@com_github_spf13_cobra//:go_default_library",
+    ],
+)
+

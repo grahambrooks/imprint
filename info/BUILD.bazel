@@ -1,0 +1,68 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/grahambrooks/imprint/info
+gazelle(name = "gazelle")
+
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+# gazelle:build_file_name BUILD,BUILD.bazel
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "defs.go",
+        "info.go",
+        "imprint.go"
+    ],
+    importpath = "github.com/grahambrooks/imprint/info",
+    visibility = ["//visibility:public"],
+      x_defs = {
+          "github.com/grahambrooks/imprint/info.BuildUrl": "{BUILD_URL}",
+          "github.com/grahambrooks/imprint/info.BuildArn": "{CODEBUILD_BUILD_ARN}",
+          "github.com/grahambrooks/imprint/info.BuildImage": "{CODEBUILD_BUILD_IMAGE}",
+          "github.com/grahambrooks/imprint/info.WebHookActorAccountId": "{CODEBUILD_WEBHOOK_ACTOR_ACCOUNT_ID}",
+          "github.com/grahambrooks/imprint/info.BuildId": "{BUILD_ID}",
+          "github.com/grahambrooks/imprint/info.SrcDir": "{CODEBUILD_SRC_DIR}",
+          "github.com/grahambrooks/imprint/info.WebHookPrevCommit": "{CODEBUILD_WEBHOOK_PREV_COMMIT}",
+          "github.com/grahambrooks/imprint/info.ExecutorNumber": "{EXECUTOR_NUMBER}",
+          "github.com/grahambrooks/imprint/info.CodeBuildBuildNumber": "{CODEBUILD_BUILD_NUMBER}",
+          "github.com/grahambrooks/imprint/info.SourceRepoUrl": "{CODEBUILD_SOURCE_REPO_URL}",
+          "github.com/grahambrooks/imprint/info.JenkinsUrl": "{JENKINS_URL}",
+          "github.com/grahambrooks/imprint/info.CvsVersion": "{CVS_BRANCH}",
+          "github.com/grahambrooks/imprint/info.GitBranch": "{GIT_BRANCH}",
+          "github.com/grahambrooks/imprint/info.KmsKeyId": "{CODEBUILD_KMS_KEY_ID}",
+          "github.com/grahambrooks/imprint/info.CodeBuildBuildId": "{CODEBUILD_BUILD_ID}",
+          "github.com/grahambrooks/imprint/info.BuildSucceeding": "{CODEBUILD_BUILD_SUCCEEDING}",
+          "github.com/grahambrooks/imprint/info.ResolvedSourceVersion": "{CODEBUILD_RESOLVED_SOURCE_VERSION}",
+          "github.com/grahambrooks/imprint/info.WebHookTrigger": "{CODEBUILD_WEBHOOK_TRIGGER}",
+          "github.com/grahambrooks/imprint/info.GitUrl": "{GIT_URL}",
+          "github.com/grahambrooks/imprint/info.BuildInitiator": "{CODEBUILD_INITIATOR}",
+          "github.com/grahambrooks/imprint/info.SourceVersion": "{CODEBUILD_SOURCE_VERSION}",
+          "github.com/grahambrooks/imprint/info.StartTime": "{CODEBUILD_START_TIME}",
+          "github.com/grahambrooks/imprint/info.JobName": "{JOB_NAME}",
+          "github.com/grahambrooks/imprint/info.BuildTag": "{BUILD_TAG}",
+          "github.com/grahambrooks/imprint/info.SvnVersion": "{SVN_REVISION}",
+          "github.com/grahambrooks/imprint/info.GitCommit": "{GIT_COMMIT}",
+          "github.com/grahambrooks/imprint/info.WebHookEvent": "{CODEBUILD_WEBHOOK_EVENT}",
+          "github.com/grahambrooks/imprint/info.WebHookHeadRef": "{CODEBUILD_WEBHOOK_HEAD_REF}",
+          "github.com/grahambrooks/imprint/info.BuildNumber": "{BUILD_NUMBER}",
+          "github.com/grahambrooks/imprint/info.AwsDefaultRegion": "{AWS_DEFAULT_REGION}",
+          "github.com/grahambrooks/imprint/info.AwsRegion": "{AWS_REGION}",
+          "github.com/grahambrooks/imprint/info.WebHookBaseRef": "{CODEBUILD_WEBHOOK_BASE_REF}",
+          "github.com/grahambrooks/imprint/info.NodeName": "{NODE_NAME}",
+          "github.com/grahambrooks/imprint/info.JavaHome": "{JAVA_HOME}",
+          "github.com/grahambrooks/imprint/info.Workspace": "{WORKSPACE}",
+          "github.com/grahambrooks/imprint/info.LogPath": "{CODEBUILD_LOG_PATH}",
+        },
+
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["info_test.go"],
+    importpath = "github.com/grahambrooks/imprint/info",
+    embed = [":go_default_library"],
+    deps = [
+        "@com_github_stretchr_testify//assert:go_default_library",
+    ],
+)
