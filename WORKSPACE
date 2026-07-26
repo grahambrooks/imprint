@@ -5,7 +5,7 @@ http_archive(
     sha256 = "db2b2d35293f405430f553bc7a865a8749a8ef60c30287e90d2b278c32771afe",
     urls = [
         "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.22.3/rules_go-v0.22.3.tar.gz",
-        "https://github.com/bazelbuild/rules_go/releases/download/v0.22.3/rules_go-v0.22.3.tar.gz",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.62.0/rules_go-v0.22.3.tar.gz",
     ],
 )
 
