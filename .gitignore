@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Bazel output symlinks/directories at repo root
+/bazel-*
+
+# Local build artifacts
+/imprint
